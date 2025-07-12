@@ -3,11 +3,11 @@ import App from "./App";
 import User from "./pages/User";
 import Role from "./pages/Role";
 import Admin from "./pages/Admin";
-import Index from "./pages/Index";
 import Artist from "./pages/Artist";
 import Donor from "./pages/Donor";
 import Catalog from "./pages/Catalog";
 import Artwork from "./pages/Artwork";
+import Index from "./pages/Index";
 
 export const routes = createBrowserRouter([
     {
