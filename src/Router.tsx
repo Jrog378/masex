@@ -1,21 +1,62 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import index from "./pages";
+import User from "./pages/User";
+import Role from "./pages/Role";
+import Admin from "./pages/Admin";
+import Index from "./pages/Index";
+import Artist from "./pages/Artist";
+import Donor from "./pages/Donor";
+import Catalog from "./pages/Catalog";
+import Artwork from "./pages/Artwork";
 
-export let routes = createBrowserRouter([
+export const routes = createBrowserRouter([
     {
         id: 'app-start',
         path: '/',
-        Component: App,
+        element: <App />,
         children: [
             {
                 index: true,
-                Component: index
+                element: <Index />
             },
             {
-                path: '/users',
-                // Component:
-            }
+                path: 'user',
+                element: <Admin />,
+                children: [
+                    {
+                        index: true,
+                        path: ':noteId?/*',
+                        element: <User />,
+                    },
+                    {
+                        path: 'role/:noteId?/*',
+                        element: <Role />
+                    }
+                ]
+            },
+            {
+                path: 'catalog',
+                element: <Admin />,
+                children: [
+                    {
+                        index: true,
+                        element: <Catalog />,
+                    },
+                    {
+                        path: 'artwork/:noteId?/*',
+                        element: <Artwork />,
+                    },
+                    {
+                        path: 'artist/:noteId?/*',
+                        element: <Artist />,
+                    },
+                    {
+                        path: 'donor/:noteId?/*',
+                        element: <Donor />,
+                    },
+                ]
+            },
         ]
-    }
+    },
+
 ])
