@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Outlet } from 'react-router'
+import { NavLink, Outlet } from 'react-router-dom'
+import { Container, Stack } from '@mui/material'
+import { ReactRouterAppProvider } from '@toolpad/core/react-router'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Outlet/>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Stack style={{ border: ".05rem solid grey", borderRadius: '1rem' }}>
+        <Stack direction={'row'} sx={{ justifyContent: 'space-between', width: '100%' }}>
+          <Stack direction={'row'}>
+            <NavLink to={'/'} className={'nav-links'}><h1>Home</h1></NavLink>
+            <NavLink to={'/catalog'} className={'nav-links'}><h1>Catalog</h1></NavLink>
+            <NavLink to={'/catalog/artwork'} className={'nav-links'}><h1>Artwork</h1></NavLink>
+            <NavLink to={'/catalog/artist'} className={'nav-links'}><h1>Artists</h1></NavLink>
+            <NavLink to={'/catalog/donor'} className={'nav-links'}><h1>Donors</h1></NavLink>
+          </Stack>
+          <Stack direction={'row'}>
+            <NavLink to={'/user'} className={'nav-links'}><h1>Admin</h1></NavLink>
+          </Stack>
+        </Stack>
+      </Stack>
+      <ReactRouterAppProvider>
+          <Outlet />
+      </ReactRouterAppProvider>
     </>
   )
 }
