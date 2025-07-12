@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { Container, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import { ReactRouterAppProvider } from '@toolpad/core/react-router'
 
 function App() {
